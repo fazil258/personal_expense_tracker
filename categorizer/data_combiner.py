@@ -1,6 +1,6 @@
 import pandas as pd
 
-def enrich_with_category(df_a: pd.DataFrame, df_b: pd.DataFrame) -> pd.DataFrame:
+def commbine(df_a: pd.DataFrame, df_b: pd.DataFrame) -> pd.DataFrame:
 
     desc_category_map = dict(
         zip(df_b['description'], df_b['category'])
