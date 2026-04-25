@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd 
 from input.image_to_df import image_to_df
-from categorizer.data_combiner import enrich_with_category
+from categorizer.data_combiner import combiner
 from categorizer.categorize_transaction import categorize_transaction
 from analysis.expense_analyzer import *
 from analysis.expense_summarizer import summarize_expenses
@@ -43,13 +43,13 @@ def main():
 
                 response = categorizer(df_csv)
                 categorized_df = categorize_transaction(response)
-                enriched_df = enrich_with_category(df_csv, categorized_df)
+                enriched_df = combiner(df_csv, categorized_df)
                 
             elif uploaded_file.type in ["image/jpeg", "image/png"]:
                 df_img = image_to_df(uploaded_file)
                 response = categorizer(df_img)
                 categorized_df = categorize_transaction(response)
-                enriched_df = enrich_with_category(df_img,categorized_df)
+                enriched_df = combiner(df_img,categorized_df)
             
             else :
                 st.error("Unsupported file type.")
